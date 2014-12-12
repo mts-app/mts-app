@@ -12,69 +12,52 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
     <script src="js/general_function.js"></script>
    
-   <!-- <script type="text/javascript">         
-         $( document ).ready(function() {
-              $.ajax({ 
-                type: 'POST',
-                url: 'http://www.braggn.com/mobile/mobile_login.php',              
-                  
-                success:function (data) {
-                    if(data == 'loggedin'){
-                         window.location= "activity.html";
-                    }
-                },
-                 error: function (){
-                    alert('error occured: Please try after some time.');
-                     return false;
-                 }
-            });
-            
-          });
+   <script type="text/javascript">      
+         
          
          // Get return url param from url while create competiiton from index page
-         var returnurls;
-         if(getUrlVars()["return_url"]){
-            var returnurl = getUrlVars()["return_url"].split('.');
-            returnurls = returnurl[0];
-         }           
+         //var returnurls;
+        // if(getUrlVars()["return_url"]){
+            //var returnurl = getUrlVars()["return_url"].split('.');
+           // returnurls = returnurl[0];
+         //}           
          function login(){
              
-            var username = $('#username').val();
-            var password = $('#password').val();
-            if(username ==''){
-                alert('You must enter username!');
+            var EMAIL = $('#email').val();
+			var MOBILE = $('#mobile').val();
+            var PASSWORD = $('#password').val();
+            if(email =='' && mobile == ''){
+                alert('You must enter Email-address or Mobile number!');
                 return false;
             }else if(password == ''){
                 alert('You must enter password!');
                 return false;                
             }
             $.ajax({ 
-                type: 'POST',
-                url: 'http://www.braggn.com/mobile/mobile_login.php',
-                data: {
-		                  task: 'dologin',
-                          user_name: username,
-                          password : password,
-                          return_url: returnurls
-                     },
+                type: 'Get',
+                url: 'http://14.140.163.70:151/WebService.asmx/Userlogin?mobile=MOBILE&mail=EMAIL&PWD=PASSWORD',
+               // data: {		                 
+                         // user_name: username,
+                          //password : password,
+                          //return_url: returnurls
+                     //},
                   
-                success:function (data) {                   
-                  if(data== username && returnurls != 'startcompetition'){
+                success:function (data) {
+					ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
+                  if(ajax_data.User_Mail== EMAIL && ajax_data.User_PWD== PASSWORD){
+						alert('You have successfully logged in.');
                     // Store username in localstorage for further usage  
-                    window.localStorage.setItem("session_username", username);  
-                    window.location= "activity.html";
-                  }else if(data && returnurls == 'startcompetition'){
-                  	window.localStorage.setItem("session_username", username);  
-                    window.location= "competition.html?return_url="+returnurls;	
+                   // window.localStorage.setItem("session_username", username);  
+                    window.location= "signup.html";
+                  }else{
+                  	//window.localStorage.setItem("session_username", username);  
+                    window.location= "login.html;	
 					  // window.location= "http://www.braggn.com/mobile_startcompetition/"+username;
-                  }else if(data == 676){
-                    alert('The login details you provided were invalid. Please try again.');
-                    return false;
                   } 
                 },
             });                  
       }
-        </script>-->
+        </script>
  </head>
  <body>
 	<div data-role="page" id="mainPage" style="z-index: 9999">
@@ -86,9 +69,20 @@
 		<div id="content" class="rounded">
 			<h3 style="line-height: 0; padding-bottom: 0.5em;">Login</h3>
 			  <div class="field">
-				<label>Email-address or Mobile number</label>	 
+				<label>Email-address</label>	 
 			    <div class="ui left labeled icon input">				 
-			      <input type="text" id="username">
+			      <input type="text" id="email">
+			      <i class="user icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			   <div class="field">or</div>
+			   <div class="field">
+				<label>Mobile number</label>	 
+			    <div class="ui left labeled icon input">				 
+			      <input type="text" id="mobile">
 			      <i class="user icon"></i>
 			      <div class="ui corner label">
 			        <i class="icon asterisk"></i>
