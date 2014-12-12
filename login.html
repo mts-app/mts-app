@@ -12,9 +12,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
     <script src="js/general_function.js"></script>
    
-     <script type="text/javascript">
-         
-          $( document ).ready(function() {
+   <!-- <script type="text/javascript">         
+         $( document ).ready(function() {
               $.ajax({ 
                 type: 'POST',
                 url: 'http://www.braggn.com/mobile/mobile_login.php',              
@@ -75,33 +74,19 @@
                 },
             });                  
       }
-        </script>
+        </script>-->
  </head>
  <body>
 	<div data-role="page" id="mainPage" style="z-index: 9999">
 		<div data-role="content">
-			<header>
-            	<div id="social">
-					<ul>
-						<li><a href="https://www.facebook.com/pages/Braggncom/1392778994316222" target="_blank"><img src="img/fb.png"></a></li>
-                        <li><a href="https://twitter.com/braggncom" target="_blank"><img src="img/tw.png"></a></li>
-                        <li><a href="https://vine.co/braggn.com" target="_blank"><img src="img/vine-16.png"></a></li>
-                        <li><a href="http://instagram.com/braggncom" target="_blank"><img src="img/Instagram-16.png"></a></li>
-                        <li><a  href="https://plus.google.com/100216016506071395783" rel="publisher" target="_blank"><img src="img/google_circle-16.png"></a></li>
-					</ul>
-				</div>
-				<a href="index.html"><img src="img/BraggN_banner_animated.gif"></a>				
-			 </header>
-			<div id="intro_video">
-				<a href="http://www.braggn.com/include/BraggN-Intro-Animation-2A_sound.mp4" class="html5lightbox" data-width="400" data-height="250" title="LEARN ABOUT BRAGGN">
-					<img src="img/youtube.png">
-				</a>
-			</div>
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
 		 </div>	
 		<div id="content" class="rounded">
 			<h3 style="line-height: 0; padding-bottom: 0.5em;">Login</h3>
 			  <div class="field">
-				<label>Username</label>	 
+				<label>Email-address or Mobile number</label>	 
 			    <div class="ui left labeled icon input">				 
 			      <input type="text" id="username">
 			      <i class="user icon"></i>
@@ -130,7 +115,7 @@
 		</div>
 	</div>
 	<footer class="rounded">
-		&copy; BraggN
+		&copy; MTS-Global Inc.
 	</footer>
  </body>
  </html>

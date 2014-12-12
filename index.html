@@ -23,7 +23,7 @@
             border-radius: 8px;         
         }
     </style>      
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         var ajax_data;
         $( document ).ready(function() {        
             $.ajax({ 
@@ -90,30 +90,16 @@
 				return false; // prevent anchor click    
 			});    
 		});
-        </script>
+        </script>-->
    
  </head>
     
  <body>
 	<div data-role="page" id="mainPage" style="z-index: 9999">
 		<div data-role="content">
-			<header>
-            	<div id="social">
-					<ul>
-						<li><a href="https://www.facebook.com/pages/Braggncom/1392778994316222" target="_blank"><img src="img/fb.png"></a></li>
-                        <li><a href="https://twitter.com/braggncom" target="_blank"><img src="img/tw.png"></a></li>
-                        <li><a href="https://vine.co/braggn.com" target="_blank"><img src="img/vine-16.png"></a></li>
-                        <li><a href="http://instagram.com/braggncom" target="_blank"><img src="img/Instagram-16.png"></a></li>
-                        <li><a  href="https://plus.google.com/100216016506071395783" rel="publisher" target="_blank"><img src="img/google_circle-16.png"></a></li>
-					</ul>
-				</div>
-				<a href="index.html"><img src="img/BraggN_banner_animated.gif"></a>				
-			 </header>
-			<div id="intro_video">
-				<a href="#openModal" onclick="show_intro_video();" title="LEARN ABOUT BRAGGN">
-					<img src="img/youtube.png">
-				</a>
-			</div>
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
 		 </div>		
 		<div id="content" class="rounded">
             <nav class="clearfix rounded">
@@ -122,75 +108,23 @@
 				  <div class="or"></div>
 				  <div class="ui positive button"><a id="signup_anchor" href="signup.html">Sign Up</a></div>
 				</div>
-			</nav>
-			<h2>Why post for <i>Nothin'</i>, join <i>BraggN</i> and earn a little <i>Somethin'</i>!</h2>
-			
+			</nav>			
             <hr/>
             <!-- VIDEO OF THE MONTH -->           		
 			<div id="featured-video">              
-				<h3 class="video_month_heading" style="font-size: 1.2em;">Video of the Month <span id="video_lastmonth"></span></h3>               
-                <!--	
-                <a href="#openModal" onclick="showvideo();">
-                    <img src="" id="img_video" width="400" border="0"/>					
-				 </a>-->
-                <div id="video_of_months">
-                    <a href="#openModal" onclick="showvideo();">
-                       <img src="" id="img_video" width="400" border="0"/>
-                    </a>
-                </div>                
-				<div class="caption">
-					<h4>Uploaded by <a id="user_video"></a> on <span id="date_video"></span></h4>
-					<p id="video_description"></p>
-					<em id="video_braggs"></em> bragg(s)
-				</div>
-                 <div id="openModal" class="modalDialog">
-                    <div>
-                        <a title="Close" class="close" onclick="go_index();">X</a>
-                        <iframe src="" scrolling="no" id="video_iframe" style="height:214px;width:270px;"></iframe>
-                    </div>
-                  </div>
+				<h3 class="video_month_heading" style="font-size: 1.2em;">Do You want to Check your Reports Status!<span id="video_lastmonth"></span></h3>               
+                            
 				<br/>
 				<div class="fluid ui blue button"></div>
-			</div>
-           		
-			<!-- PHOTO OF THE MONTH -->
-			<div id="featuredphoto" class="clearfix">
-               
-				<h3 style="font-size: 1.2em;">Photo of the Month <span id="image_lastmonth"></span></h3>
-                 <a class="swipebox" href=""  id="image_dir" title="Swipe screen to close">   
-					<img src="" id="img_image" width="400">
-				 </a>				
-				<div class="caption">
-					<h4>Uploaded by <a id="user_image"></a> on <span id="date_image"></span></h4>
-					<p id="image_description"></p>
-					<em id="image_braggs"></em> bragg(s)
-				</div>
-				<br/>
-				<div class="fluid ui blue button"></div>
-			</div>
-			<a href="login.html?return_url=startcompetition.html" class="competitionBtn">Start Competition</a>
-			
-			<div id="badges">
-				<i class="star icon green"></i> <small class="text-muted">25 braggs</small>
-				<i class="star icon purple"></i> <small class="text-muted">50 braggs</small>
-				<i class="star icon orange"></i> <small class="text-muted">75 braggs</small>
-				<i class="star icon red"></i> <small class="text-muted">100 braggs</small>
-				<i class="star icon blue"></i> <small class="text-muted">150 braggs</small>
-				<i class="star icon yellow"></i> <small class="text-muted">200 braggs</small>
-				<i class="smile icon green"></i> <small class="text-muted">200 followers</small>
-				<i class="smile icon purple"></i> <small class="text-muted">300 followers</small>
-				<i class="smile icon yellow"></i> <small class="text-muted">500 followers</small>
-			</div>            	
+			</div> 	
+			            	
 		</div>        
 	</div>
        
 	<footer class="rounded">
-		&copy; BraggN
+		&copy; MTS-Global Inc.
 	</footer>
-    <script src="js/jquery.swipebox.min.js"></script>
-    <script type="text/javascript">
-		$('.swipebox').swipebox();
-	</script>
+  
  
  </body>
  </html>
