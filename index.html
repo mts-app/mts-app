@@ -23,39 +23,17 @@
             border-radius: 8px;         
         }
     </style>      
-   <!-- <script type="text/javascript">
+   <script type="text/javascript">
         var ajax_data;
         $( document ).ready(function() {        
             $.ajax({ 
-                type: 'POST',
-                url: 'http://www.braggn.com/mobile/mobile_index.php',              
-                  
+                type: 'GET',
+                url: 'http://14.140.163.70:151/WebService.asmx/Userlogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
+                
                 success:function (data) {
-                    if(data == 'loggedin'){
-                         window.location= "activity.html";
-                    }else{
-                        ajax_data = jQuery.parseJSON(data);
-    
-                        //Video of the month                      
-                        
-                        $('#img_video').attr('src', ajax_data.video_path);
-                        $('#video_dir').attr('href', ajax_data.video_dir);
-                        $('#user_video').html(ajax_data.video.user_username);
-                        $('#date_video').html(ajax_data.video.video_date);
-                        $('#video_description').html(ajax_data.video.media_desc);
-                        $('#video_braggs').html(ajax_data.video.total_braggs);
-                        
-                        //Image of the month
-                        $('#img_image').attr('src',ajax_data.image_path);
-                        $('#image_dir').attr('href',ajax_data.image_dir);
-                        $('#user_image').html(ajax_data.image.user_username);
-                        $('#date_image').html(ajax_data.image.image_date);
-                        $('#image_description').html(ajax_data.image.media_desc);
-                        $('#image_braggs').html(ajax_data.image.total_braggs);
-                      
-                       $('#video_lastmonth').html(ajax_data.last_month);
-                       $('#image_lastmonth').html(ajax_data.last_month);
-                    }
+					//ajax_data = jQuery.parseJSON(data);
+					ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
+					//alert(ajax_data.User_ID);				                    
                 },
                  error: function (){
                     alert('error occured: Please try after some time.');
@@ -63,34 +41,10 @@
                  }
             });
           
-       });
+       });  
 		
-        function showvideo(){               
-            var video_path = ajax_data.video_dir;
-            var video_poster = ajax_data.video_path;
-            var video_url = 'http://www.braggn.com/mobile/mobile_play_video.php?video_path='+video_path+'&video_poster='+video_poster;
-            $('#video_iframe').attr('src', video_url);
-            $('#openModal').attr('style',' top: 105px');
-        }
-        
-        function go_index(){
-            window.location='index.html';
-        }
-		function show_intro_video(){
-			var video_path = 'http://www.braggn.com/include/BraggN-Intro-Animation-2A_sound.mp4';
-            var video_poster = 'img/youtube.png';
-            var video_url = 'http://www.braggn.com/mobile/mobile_play_video.php?video_path='+video_path+'&video_poster='+video_poster;
-            $('#video_iframe').attr('src', video_url);
-			$('#openModal').attr('style',' top: 105px');
-		}
-        $(function () {    
-            $('#login_anchor,#signup_anchor').on('click touchend', function() { 
-				var link = $(this).attr('href');   
-				window.location = link; // opens in new window
-				return false; // prevent anchor click    
-			});    
-		});
-        </script>-->
+       
+        </script>
    
  </head>
     
