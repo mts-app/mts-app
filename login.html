@@ -5,7 +5,7 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<title>BraggN</title>
+	<title>MTS-APP</title>
 	<link rel="stylesheet" href="css/mobile.css">
 	<link rel="stylesheet" href="css/semantic.css">  
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>   
@@ -26,16 +26,18 @@
             var EMAIL = $('#email').val();
 			var MOBILE = $('#mobile').val();
             var PASSWORD = $('#password').val();
-            if(email =='' && mobile == ''){
+            if(EMAIL =='' && MOBILE == ''){
                 alert('You must enter Email-address or Mobile number!');
                 return false;
-            }else if(password == ''){
+            }else if(PASSWORD == ''){
                 alert('You must enter password!');
                 return false;                
             }
+			var login_url = "http://14.140.163.70:151/WebService.asmx/Userlogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
+			
             $.ajax({ 
                 type: 'Get',
-                url: 'http://14.140.163.70:151/WebService.asmx/Userlogin?mobile=MOBILE&mail=EMAIL&PWD=PASSWORD',
+                url: login_url,
                // data: {		                 
                          // user_name: username,
                           //password : password,
@@ -43,9 +45,8 @@
                      //},
                   
                 success:function (data) {
-					alert('data');
-					ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
-					alert(ajax_data);
+					
+					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];					
                   if(ajax_data.User_Mail== EMAIL && ajax_data.User_PWD== PASSWORD){
 						alert('You have successfully logged in.');
                     // Store username in localstorage for further usage  
@@ -53,7 +54,7 @@
                     window.location= "signup.html";
                   }else{
                   	//window.localStorage.setItem("session_username", username);  
-                    window.location= "login.html;	
+                    window.location= "login.html";	
 					  // window.location= "http://www.braggn.com/mobile_startcompetition/"+username;
                   } 
                 },
@@ -102,6 +103,7 @@
 			    </div>
 			  </div>
 			  <br/>
+			
 			  <div class="ui blue submit button" onclick="login();">Login</div>
 			  <br/><br/>
 			  <div>

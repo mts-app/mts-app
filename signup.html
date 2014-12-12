@@ -5,70 +5,40 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<title>BraggN</title>
+	<title>MTS-APP</title>
 	<link rel="stylesheet" href="css/mobile.css">
 	<link rel="stylesheet" href="css/semantic.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>	 
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>  
     <script type="text/javascript">
-        $(document).ready(function(){
-            var d = new Date();
-            var offsets = d.getTimezoneOffset();					
-            offsets = ((offsets<0? '+':'-')+(Math.abs(offsets/60)))					
-            $('#timezone').val(offsets);
-        });
+        
         function signup(){
             
-            var email    = $('#user_email').val();
-            var username = $('#user_name').val();
-            var password = $('#user_pass').val();
-            var birthday = $('#bday').val();
-            if(email ==''){
+            var user_email   = $('#user_email').val();
+            var user_phone 	 = $('#user_mobile').val();
+           
+            if(user_email ==''){
                 alert('You must enter email address!');
                 return false;
-            }else if(username == ''){
-                alert('You must enter username!');
-                return false;                
-            }else if(password == ''){
-                alert('You must enter password!');
-                return false;                
-            }else if(birthday == ''){
-                alert('You must enter birthday!');
-                return false;
-                
             }
-            var fname     = $('#first_name').val();
-            var lname     = $('#last_name').val();
-            var email     = $('#user_email').val();
-            var username  = $('#user_name').val();
-            var Password  = $('#user_pass').val();
-            var timezone  = $('#timezone').val();
-            var user_type = $('#user_type').val();
-            var bday      = $('#bday').val();
-            
+			if(user_phone == ''){
+                alert('You must enter phone number!');
+                return false;                
+            }    
+           var signup_url = "http://14.140.163.70:151/WebService.asmx/updatesignup?mail="+user_email+"&clientid="+user_phone;
+           
             $.ajax({ 
-                type: 'POST',
-                url: 'http://www.braggn.com/mobile/mobile_signup.php',
-                data: {
-		                  task: 'adduser',
-                          first_name: fname,
-                          last_name : lname,
-                          user_email : email,
-                          user_name : username,
-                          user_pass : Password,
-                          timezone : timezone,
-                          user_type : user_type,
-                          bday      : bday    
-                     },
+                type: 'Get',
+                url: signup_url,              
                   
-                success:function (data) {
-                    if(data == 1){
-                        alert('You have been registered successfully.');
+                success:function (data) {					
+					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
+					
+                    if(ajax_data == "Record updated successfully"){
+                        alert('You have been verified successfully.');
                         window.location= "login.html";
-                    }else if(data == 'coppaform'){
-                        window.location="coppa_consent.html";
-                    }else if(data == 'emailexists'){
-                        alert('The email address you provided has already been taken. Please provide another.');
+                   }else {
+                        alert('The email address or mobile number you provided are not verified. Please provide another.');
                     }
                 },
             }); 
@@ -80,68 +50,29 @@
  <body>
 	<div data-role="page" id="mainPage" style="z-index: 9999">
 		<div data-role="content">
-			<header>
-            	<div id="social">
-					<ul>
-						<li><a href="https://www.facebook.com/pages/Braggncom/1392778994316222" target="_blank"><img src="img/fb.png"></a></li>
-                        <li><a href="https://twitter.com/braggncom" target="_blank"><img src="img/tw.png"></a></li>
-                        <li><a href="https://vine.co/braggn.com" target="_blank"><img src="img/vine-16.png"></a></li>
-                        <li><a href="http://instagram.com/braggncom" target="_blank"><img src="img/Instagram-16.png"></a></li>
-                        <li><a  href="https://plus.google.com/100216016506071395783" rel="publisher" target="_blank"><img src="img/google_circle-16.png"></a></li>
-					</ul>
-				</div>
-				<a href="index.html"><img src="img/BraggN_banner_animated.gif"></a>				
-			 </header>
-			<div id="intro_video">
-				<a href="http://www.braggn.com/include/BraggN-Intro-Animation-2A_sound.mp4" class="html5lightbox" data-width="400" data-height="250" title="LEARN ABOUT BRAGGN">
-					<img src="img/youtube.png">
-				</a>
-			</div>
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
 		 </div>	
 		<div class="right floated tiny ui blue button" style="margin-right: 8px;margin-top: 19px;" onclick="javascript:window.location='login.html';">Login</div>
 		<div id="content" class="rounded">
 			<h3 style="line-height: 0; padding-bottom: 0.5em;">Sign Up</h3>
 			<div class="ui fluid form">
-			  <div class="two fields">
-			    <div class="field">
-			      <input type="text" name="first_name" id="first_name"  value="" size="30"  placeholder="First Name" maxlength="30"/>
-			    </div>
-			    <div class="field">
-			      <input type="text" name="last_name" id="last_name"  value="" size="30"  placeholder="Last Name" maxlength="30"/><br/>
-			    </div>
-			  </div>
+			 
               <div class="field">
                 <input type="text" name="user_email" id="user_email"  value="" placeholder="Email Address" size="30" maxlength="30"/><br/>
-			  </div>    
+			  </div> <br/>   
              <div class="field">
-                <input type="text" name="user_name" id="user_name"  value="" placeholder="Username" size="30" maxlength="30"/><br/>
-			  </div>
-              <div class="field">
-			   <input type="password" name="user_pass" id="user_pass" placeholder="Password" size="30" maxlength="30"/><br/>
-			  </div>
-			  <div class="date field">
-			    <label>Birthday</label>
-			    <input type="text" id="bday" placeholder="dd/mm/yyyy">
-			  </div>
-			  <div class="grouped inline fields">
-			  	<label>Profile Privacy</label>
-			    <div class="field">			    
-			       <input type="radio" name="user_type" id="user_type" value="0"/>
-			        <label>Public</label>			    
-			    </div>
-			    <div class="field">
-			        <input type="radio" name="user_type" id="user_type" value="1"/>
-			        <label>Private</label>
-			    </div>
-              </div>
-			  </div>
-                <input type="hidden" name="timezone" id="timezone" value="" />
+                <input type="text" name="user_mobile" id="user_mobile"  value="" placeholder="Mobile Number" size="30" maxlength="30"/><br/>
+			  </div>             		 
+			 
+			  </div> <br/>              
 			    <div class="ui blue submit button" onclick="signup();">Submit</div>
 			</div>
-		</div>
+	</div>
 	</div>
 	<footer class="rounded">
-		&copy; BraggN
+		&copy; MTS-Global Inc.
 	</footer>
  </body>
  </html>
