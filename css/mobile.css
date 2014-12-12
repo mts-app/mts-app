@@ -1,0 +1,435 @@
+body{
+	margin: 0;
+	padding: 1em;
+	color: #333;
+	font: 100% normal 'Open Sans', Arial, sans-serif;
+	background: #0099cb;
+	overflow-x:hidden;
+}
+
+h2{
+	font-style: italic;
+	font-size: 1.5em;
+	font-weight: 300;
+	text-align: center;
+	clear:both;
+}
+
+h3{
+	font-size: 1.5em;
+	clear:both;
+}
+
+a{
+	text-decoration: none;
+	color: #0099cb;
+}
+
+label{
+	font-size: 14px
+}
+
+.player .video-wrapper{
+	position: relative !important
+}
+
+img{
+	max-width: 100%;
+	height: auto !important;
+}
+
+/*#mainPage{
+		width: 920px;
+		margin: 0 auto;
+		position: relative;
+		display: block;
+		}*/
+header{
+	/*background: #fff;*/
+	/*background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #D8D8D8), color-stop(1, #000000) );*/
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:2px 3px;
+	/*height:55px;*/
+}
+
+header a, footer{
+	text-align: center;
+	display: block;
+}
+
+.headerImage img{
+	width: 100%;
+	max-width: 100%; 
+	/*padding: 30px 0;*/
+	text-align: center;
+	margin: 0 auto;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#social ul li a{
+	width:13px;
+	height:13px;
+}
+
+/*#social ul li.icon-twitter a{ background-position: -36px 0; }
+#social ul li.icon-vine a{ background-position: -72px 0; }
+#social ul li.icon-instagram a{ background-position: -108px 0; }*/
+#social{
+	/*padding: 1em;
+	margin-bottom: -2em;*/
+	z-index: 9999;
+	/*float: right;*/
+	right: 15px;
+	top:20px;
+	position: absolute;
+	/*margin-top:-9px*/
+}
+
+#social li{ display:inline-block; cursor: pointer;}
+#content{ 
+	background: #fff;
+	padding: 1em;
+	margin-top: 0.5em;
+}
+
+nav{
+	text-align: center;
+}
+
+nav a{
+	color: #2D2E31 !important
+}
+
+.rounded{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.clearfix{
+	clear:both;
+	display: block;
+	position:relative;
+}
+
+.page-title{
+	line-height: 0;
+}
+
+input{
+	font-family: 'Open Sans';
+}
+
+.competitionBtn{
+	margin: 1em auto;
+	display: block;
+	width:7em;
+	text-align: center;
+	height: 4em;
+	background: #5BBD72;
+	padding: 3em 1em 2em;
+	border-radius: 100%;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.text-muted, .date{ color: #777; }
+.feed-title{
+	display: block;
+	line-height: 0;
+	padding-bottom: 1em;
+	font-size: 0.9em
+}
+
+.feed-count{
+	padding: 0.85em 0;
+	font-size: 0.75em;
+}
+
+.profile-user{
+	padding: 0.5em 0 0;
+	display: block;
+}
+
+footer{
+	padding: 1em;
+	color: #fff;
+}
+
+.purple{
+	color: #564F8A;
+	border-color: #564F8A;
+}
+
+.orange{
+	color: #E96633;
+	border-color: #E96633;
+}
+
+.red{
+	color: #D95C5C
+}
+
+.blue{
+	color: #6ECFF5
+}
+
+.yellow{
+	color: #F5D700
+}
+
+.star{
+	border-width: 1px;
+	border-radius: 100%;
+}
+
+#badges{
+	text-align: center;
+	opacity: 0.8;
+}
+
+#badges small{
+	padding-right: 10px;
+}
+.timeago{
+	color: #aaa;
+}
+
+.modalDialog, .modalDialog_profile, .braggn_locker {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 00ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog_profile:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.braggn_locker:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 250px;
+    height: 302px;
+    position: relative;
+    margin: 10% auto;
+    padding: 0px 38px 20px 15px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+.modalDialog_profile > div {
+    width: 250px;
+    height: 464px;
+    position: relative;
+    margin: 10% auto;
+    padding: 16px 40px 4px 1px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+.braggn_locker > div {	
+	width: 195px;
+    height: 428px;
+    position: relative;
+    margin: 15% auto;
+    padding: 6px 40px 4px 4px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);	
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+#intro_video {
+	color: #fff;
+	position: absolute;
+	right:40px;
+	top: 50px;
+}
+#intro_video a{ 
+	color:#fff; 
+	padding:0 5px
+}
+#userlocker {
+    position: relative;
+}
+.left.profile div, .right.profile div {
+    margin-bottom: 15px !important;
+}
+* {
+    font-family: 'Open Sans',sans-serif;
+    font-size: 13px;
+}
+*::-moz-placeholder {
+    color: #999;
+}
+*::-moz-placeholder {
+    color: #444;
+}
+
+.left h3, .right h3 {
+    border-bottom: 1px solid #0099cb;
+    color: #000;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+#userlocker a {
+}
+.locker {
+    z-index: 99999;
+}
+/*.locker{
+	background: url("../images/lockers.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 400px;
+    margin: -10px 0 0 -20px;
+    width: 250px
+	}*/
+.locker {
+    cursor: pointer;
+	content:" ";
+    display: block;
+	 /*  margin: -10px 0 0 -20px;*/
+   	width: 44px;
+	height:92px;
+	margin-left:25px;
+	background: url("http://www.braggn.com/mobile/images/lockdoor.png") no-repeat;
+}
+a, .blue {
+    color: #0099cb;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out 0s;
+}
+#userlocker ul {
+    height: 0;
+    margin: 0;
+    padding: 50px 40px;
+    position: absolute;
+    top: 30px;
+    width: 130px;
+}
+#userlocker ul li {
+    clear: right;
+    display: inline-block;
+    height: 87px;
+    width: 40px;
+}
+
+.star.braggn {
+    background: url("http://www.braggn.com/mobile/images/braggn.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.star, .smiley {
+    background-repeat: no-repeat;
+    content: " ";
+    cursor: pointer;
+    display: block;
+    height: 39px;
+    margin-right: 5px;
+    width: 40px;
+}
+
+.star.gold{ background:url(http://www.braggn.com/mobile/images/star-yellow.png) }
+.star.blue{ background:url(http://www.braggn.com/mobile/images/star-blue.png) }
+.star.lime{ background:url(http://www.braggn.com/mobile/images/star-green.png) }
+.star.ruby{ background:url(http://www.braggn.com/mobile/images/star-red.png) }
+.star.orange{ background:url(http://www.braggn.com/mobile/images/star-orange.png) }
+.star.purple{ background:url(http://www.braggn.com/mobile/images/star-purple.png) }
+.star.braggn{ background:url(http://www.braggn.com/mobile/images/braggn.png) }
+.badgeCount sup, .individualTitle{ color: #fff; }
+.smiley.green{background:url(http://www.braggn.com/mobile/images/smiley-green.png)}
+.smiley.purple{background:url(http://www.braggn.com/mobile/images/smiley-purple.png)}
+.smiley.yellow{background:url(http://www.braggn.com/mobile/images/smiley-yellow.png)}
+
+.lockerLogin{
+	float:right;
+}
+
+.icon{ color: #bbb }
+.icon.help{
+	vertical-align: middle;
+	width: 15px;
+	display: inline-block;
+}
+
+#stars .badgeCount{ font-weight: bold }
+
+#stars .badgeCount:before{
+	content: "=";
+	font-size: 25px;
+	display: block;
+	position: absolute;
+	font-weight: 100;
+	margin: 7px -40px;
+}
+
+#stars ul li span{
+	float: left;
+}
+
+#stars .badgeCount, #stars .badgeLabel{
+	float: right;
+	clear: right;
+	width: 250px;
+	margin-left: 60px;
+}
+

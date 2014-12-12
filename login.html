@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>BraggN</title>
+	<link rel="stylesheet" href="css/mobile.css">
+	<link rel="stylesheet" href="css/semantic.css">  
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+    <script src="js/general_function.js"></script>
+   
+     <script type="text/javascript">
+         
+          $( document ).ready(function() {
+              $.ajax({ 
+                type: 'POST',
+                url: 'http://www.braggn.com/mobile/mobile_login.php',              
+                  
+                success:function (data) {
+                    if(data == 'loggedin'){
+                         window.location= "activity.html";
+                    }
+                },
+                 error: function (){
+                    alert('error occured: Please try after some time.');
+                     return false;
+                 }
+            });
+            
+          });
+         
+         // Get return url param from url while create competiiton from index page
+         var returnurls;
+         if(getUrlVars()["return_url"]){
+            var returnurl = getUrlVars()["return_url"].split('.');
+            returnurls = returnurl[0];
+         }           
+         function login(){
+             
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if(username ==''){
+                alert('You must enter username!');
+                return false;
+            }else if(password == ''){
+                alert('You must enter password!');
+                return false;                
+            }
+            $.ajax({ 
+                type: 'POST',
+                url: 'http://www.braggn.com/mobile/mobile_login.php',
+                data: {
+		                  task: 'dologin',
+                          user_name: username,
+                          password : password,
+                          return_url: returnurls
+                     },
+                  
+                success:function (data) {                   
+                  if(data== username && returnurls != 'startcompetition'){
+                    // Store username in localstorage for further usage  
+                    window.localStorage.setItem("session_username", username);  
+                    window.location= "activity.html";
+                  }else if(data && returnurls == 'startcompetition'){
+                  	window.localStorage.setItem("session_username", username);  
+                    window.location= "competition.html?return_url="+returnurls;	
+					  // window.location= "http://www.braggn.com/mobile_startcompetition/"+username;
+                  }else if(data == 676){
+                    alert('The login details you provided were invalid. Please try again.');
+                    return false;
+                  } 
+                },
+            });                  
+      }
+        </script>
+ </head>
+ <body>
+	<div data-role="page" id="mainPage" style="z-index: 9999">
+		<div data-role="content">
+			<header>
+            	<div id="social">
+					<ul>
+						<li><a href="https://www.facebook.com/pages/Braggncom/1392778994316222" target="_blank"><img src="img/fb.png"></a></li>
+                        <li><a href="https://twitter.com/braggncom" target="_blank"><img src="img/tw.png"></a></li>
+                        <li><a href="https://vine.co/braggn.com" target="_blank"><img src="img/vine-16.png"></a></li>
+                        <li><a href="http://instagram.com/braggncom" target="_blank"><img src="img/Instagram-16.png"></a></li>
+                        <li><a  href="https://plus.google.com/100216016506071395783" rel="publisher" target="_blank"><img src="img/google_circle-16.png"></a></li>
+					</ul>
+				</div>
+				<a href="index.html"><img src="img/BraggN_banner_animated.gif"></a>				
+			 </header>
+			<div id="intro_video">
+				<a href="http://www.braggn.com/include/BraggN-Intro-Animation-2A_sound.mp4" class="html5lightbox" data-width="400" data-height="250" title="LEARN ABOUT BRAGGN">
+					<img src="img/youtube.png">
+				</a>
+			</div>
+		 </div>	
+		<div id="content" class="rounded">
+			<h3 style="line-height: 0; padding-bottom: 0.5em;">Login</h3>
+			  <div class="field">
+				<label>Username</label>	 
+			    <div class="ui left labeled icon input">				 
+			      <input type="text" id="username">
+			      <i class="user icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="field">
+				 <label>Password</label> 
+			    <div class="ui left labeled icon input">				  		
+			      <input type="password" id="password" >
+			      <i class="lock icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			  <br/>
+			  <div class="ui blue submit button" onclick="login();">Login</div>
+			  <br/><br/>
+			  <div>
+			  	<img class="icon help" border="0" src="http://www.braggn.com/images/help16.gif">
+				New user? Sign up <a href="signup.html">here</a>
+			  </div>	
+		</div>
+	</div>
+	<footer class="rounded">
+		&copy; BraggN
+	</footer>
+ </body>
+ </html>

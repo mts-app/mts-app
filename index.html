@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>BraggN</title>
+      
+	<link rel="stylesheet" href="css/mobile.css">
+	<link rel="stylesheet" href="css/semantic.css">
+    <link rel="stylesheet" href="css/swipebox.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>	  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <style>
+        .modalDialog > div {
+            width: 236px;
+            height: 214px;
+            position: relative;
+            margin: 12% auto;
+            padding: 0px 38px 4px 0px;
+            border-radius: 8px;         
+        }
+    </style>      
+    <script type="text/javascript">
+        var ajax_data;
+        $( document ).ready(function() {        
+            $.ajax({ 
+                type: 'POST',
+                url: 'http://www.braggn.com/mobile/mobile_index.php',              
+                  
+                success:function (data) {
+                    if(data == 'loggedin'){
+                         window.location= "activity.html";
+                    }else{
+                        ajax_data = jQuery.parseJSON(data);
+    
+                        //Video of the month                      
+                        
+                        $('#img_video').attr('src', ajax_data.video_path);
+                        $('#video_dir').attr('href', ajax_data.video_dir);
+                        $('#user_video').html(ajax_data.video.user_username);
+                        $('#date_video').html(ajax_data.video.video_date);
+                        $('#video_description').html(ajax_data.video.media_desc);
+                        $('#video_braggs').html(ajax_data.video.total_braggs);
+                        
+                        //Image of the month
+                        $('#img_image').attr('src',ajax_data.image_path);
+                        $('#image_dir').attr('href',ajax_data.image_dir);
+                        $('#user_image').html(ajax_data.image.user_username);
+                        $('#date_image').html(ajax_data.image.image_date);
+                        $('#image_description').html(ajax_data.image.media_desc);
+                        $('#image_braggs').html(ajax_data.image.total_braggs);
+                      
+                       $('#video_lastmonth').html(ajax_data.last_month);
+                       $('#image_lastmonth').html(ajax_data.last_month);
+                    }
+                },
+                 error: function (){
+                    alert('error occured: Please try after some time.');
+                     return false;
+                 }
+            });
+          
+       });
+		
+        function showvideo(){               
+            var video_path = ajax_data.video_dir;
+            var video_poster = ajax_data.video_path;
+            var video_url = 'http://www.braggn.com/mobile/mobile_play_video.php?video_path='+video_path+'&video_poster='+video_poster;
+            $('#video_iframe').attr('src', video_url);
+            $('#openModal').attr('style',' top: 105px');
+        }
+        
+        function go_index(){
+            window.location='index.html';
+        }
+		function show_intro_video(){
+			var video_path = 'http://www.braggn.com/include/BraggN-Intro-Animation-2A_sound.mp4';
+            var video_poster = 'img/youtube.png';
+            var video_url = 'http://www.braggn.com/mobile/mobile_play_video.php?video_path='+video_path+'&video_poster='+video_poster;
+            $('#video_iframe').attr('src', video_url);
+			$('#openModal').attr('style',' top: 105px');
+		}
+        $(function () {    
+            $('#login_anchor,#signup_anchor').on('click touchend', function() { 
+				var link = $(this).attr('href');   
+				window.location = link; // opens in new window
+				return false; // prevent anchor click    
+			});    
+		});
+        </script>
+   
+ </head>
+    
+ <body>
+	<div data-role="page" id="mainPage" style="z-index: 9999">
+		<div data-role="content">
+			<header>
+            	<div id="social">
+					<ul>
+						<li><a href="https://www.facebook.com/pages/Braggncom/1392778994316222" target="_blank"><img src="img/fb.png"></a></li>
+                        <li><a href="https://twitter.com/braggncom" target="_blank"><img src="img/tw.png"></a></li>
+                        <li><a href="https://vine.co/braggn.com" target="_blank"><img src="img/vine-16.png"></a></li>
+                        <li><a href="http://instagram.com/braggncom" target="_blank"><img src="img/Instagram-16.png"></a></li>
+                        <li><a  href="https://plus.google.com/100216016506071395783" rel="publisher" target="_blank"><img src="img/google_circle-16.png"></a></li>
+					</ul>
+				</div>
+				<a href="index.html"><img src="img/BraggN_banner_animated.gif"></a>				
+			 </header>
+			<div id="intro_video">
+				<a href="#openModal" onclick="show_intro_video();" title="LEARN ABOUT BRAGGN">
+					<img src="img/youtube.png">
+				</a>
+			</div>
+		 </div>		
+		<div id="content" class="rounded">
+            <nav class="clearfix rounded">
+				<div class="ui buttons">
+				  <div class="ui button"><a id="login_anchor" href="login.html">Login</a></div>
+				  <div class="or"></div>
+				  <div class="ui positive button"><a id="signup_anchor" href="signup.html">Sign Up</a></div>
+				</div>
+			</nav>
+			<h2>Why post for <i>Nothin'</i>, join <i>BraggN</i> and earn a little <i>Somethin'</i>!</h2>
+			
+            <hr/>
+            <!-- VIDEO OF THE MONTH -->           		
+			<div id="featured-video">              
+				<h3 class="video_month_heading" style="font-size: 1.2em;">Video of the Month <span id="video_lastmonth"></span></h3>               
+                <!--	
+                <a href="#openModal" onclick="showvideo();">
+                    <img src="" id="img_video" width="400" border="0"/>					
+				 </a>-->
+                <div id="video_of_months">
+                    <a href="#openModal" onclick="showvideo();">
+                       <img src="" id="img_video" width="400" border="0"/>
+                    </a>
+                </div>                
+				<div class="caption">
+					<h4>Uploaded by <a id="user_video"></a> on <span id="date_video"></span></h4>
+					<p id="video_description"></p>
+					<em id="video_braggs"></em> bragg(s)
+				</div>
+                 <div id="openModal" class="modalDialog">
+                    <div>
+                        <a title="Close" class="close" onclick="go_index();">X</a>
+                        <iframe src="" scrolling="no" id="video_iframe" style="height:214px;width:270px;"></iframe>
+                    </div>
+                  </div>
+				<br/>
+				<div class="fluid ui blue button"></div>
+			</div>
+           		
+			<!-- PHOTO OF THE MONTH -->
+			<div id="featuredphoto" class="clearfix">
+               
+				<h3 style="font-size: 1.2em;">Photo of the Month <span id="image_lastmonth"></span></h3>
+                 <a class="swipebox" href=""  id="image_dir" title="Swipe screen to close">   
+					<img src="" id="img_image" width="400">
+				 </a>				
+				<div class="caption">
+					<h4>Uploaded by <a id="user_image"></a> on <span id="date_image"></span></h4>
+					<p id="image_description"></p>
+					<em id="image_braggs"></em> bragg(s)
+				</div>
+				<br/>
+				<div class="fluid ui blue button"></div>
+			</div>
+			<a href="login.html?return_url=startcompetition.html" class="competitionBtn">Start Competition</a>
+			
+			<div id="badges">
+				<i class="star icon green"></i> <small class="text-muted">25 braggs</small>
+				<i class="star icon purple"></i> <small class="text-muted">50 braggs</small>
+				<i class="star icon orange"></i> <small class="text-muted">75 braggs</small>
+				<i class="star icon red"></i> <small class="text-muted">100 braggs</small>
+				<i class="star icon blue"></i> <small class="text-muted">150 braggs</small>
+				<i class="star icon yellow"></i> <small class="text-muted">200 braggs</small>
+				<i class="smile icon green"></i> <small class="text-muted">200 followers</small>
+				<i class="smile icon purple"></i> <small class="text-muted">300 followers</small>
+				<i class="smile icon yellow"></i> <small class="text-muted">500 followers</small>
+			</div>            	
+		</div>        
+	</div>
+       
+	<footer class="rounded">
+		&copy; BraggN
+	</footer>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+		$('.swipebox').swipebox();
+	</script>
+ 
+ </body>
+ </html>
