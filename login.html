@@ -45,7 +45,7 @@
                      //},
                   
                 success:function (data) {
-					
+					alert(data);
 					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
 					alert(ajax_data);	
                   if(ajax_data.User_Mail== EMAIL && ajax_data.User_PWD == PASSWORD){
