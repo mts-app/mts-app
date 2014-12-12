@@ -46,8 +46,9 @@
                   
                 success:function (data) {
 					
-					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];					
-                  if(ajax_data.User_Mail== EMAIL && ajax_data.User_PWD== PASSWORD){
+					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
+					alert(ajax_data);	
+                  if(ajax_data.User_Mail== EMAIL && ajax_data.User_PWD == PASSWORD){
 						alert('You have successfully logged in.');
                     // Store username in localstorage for further usage  
                    // window.localStorage.setItem("session_username", username);  
