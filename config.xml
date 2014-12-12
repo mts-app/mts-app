@@ -11,7 +11,7 @@
     <description>
         MTS-GLOBAL INC.
     </description>
-     <icon src="res/mts_logo.jpg" />
+     <icon src="res/mts_logo.jpg" width="72" height="72"/>
 
    
      <!--   If you do not want any permissions to be added to your app, add the
