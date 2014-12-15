@@ -27,13 +27,13 @@
                 return false;                
             }
 			var login_url = "http://14.140.163.70:151/WebService.asmx/UserLogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
-			
+			alert(login_url);
 			return false;
             $.ajax({ 
                 type: 'GET',
                 url: login_url,                  
                 success:function (data) {
-					
+					alert(data);
 					$(data).each(function() {
 						if(this.User_Verify_Status == 'true'){
 						  alert('You have successfully logged in. Please wait....');
