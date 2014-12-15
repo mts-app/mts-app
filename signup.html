@@ -25,21 +25,24 @@
                 alert('You must enter phone number!');
                 return false;                
             }    
-           var signup_url = "http://14.140.163.70:151/WebService.asmx/updatesignup?mail="+user_email+"&clientid="+user_phone;
+           var signup_url = "http://14.140.163.70:151/WebService.asmx/UpdateSignup?mail="+user_email+"&clientid="+user_phone;
            
             $.ajax({ 
-                type: 'Get',
+                type: 'GEt',
                 url: signup_url,              
                   
-                success:function (data) {					
-					var ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
-					
-                    if(ajax_data == "Record updated successfully"){
-                        alert('You have been verified successfully.');
-                        window.location= "login.html";
-                   }else {
-                        alert('The email address or mobile number you provided are not verified. Please provide another.');
-                    }
+                success:function (data) {
+					$(data).each(function() {						
+						var VERIFY = $.trim(this.User_Verify_Status);
+						if(VERIFY == 1){
+						   alert('You have been verified successfully');
+						   window.location= "login.html";						
+						}else{ 
+							alert('Something went wrong. Please try after some time. or The email address or mobile number you provided are not verified. Please provide another.');
+							window.location= "signup.html";					  
+						} 
+					});			
+                    
                 },
             }); 
             
@@ -65,12 +68,12 @@
              <div class="field">
                 <input type="text" name="user_mobile" id="user_mobile"  value="" placeholder="Mobile Number" size="30" maxlength="30"/><br/>
 			  </div>             		 
-			 
-			  </div> <br/>              
+			 <br/>
+			  </div>             
 			    <div class="ui blue submit button" onclick="signup();">Submit</div>
-			</div>
+			</div><br/>
 	</div>
-	</div>
+	
 	<footer class="rounded">
 		&copy; MTS-Global Inc.
 	</footer>
