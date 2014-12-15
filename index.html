@@ -16,15 +16,23 @@
         
    <script type="text/javascript">
         var ajax_data;
-        $( document ).ready(function() {        
+        $( document ).ready(function() {			
             $.ajax({ 
                 type: 'GET',
-                url: 'http://14.140.163.70:151/WebService.asmx/Userlogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
-                
+                url: 'http://14.140.163.70:151/WebService.asmx/UserLogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
+				//url: 'http://14.140.163.70:151/WebService.asmx/UserLogin',              
+               // data: {		                 
+                          //mobile: "9818230356",
+                         // mail : "sunil@mts-india.com",
+                          //PWD: "sunil123",
+                     //},				
                 success:function (data) {
-					//ajax_data = jQuery.parseJSON(data);
-					ajax_data = jQuery.parseJSON(data.documentElement.innerHTML)[0];
-					//alert(ajax_data.User_ID);				                    
+					alert(data);
+					$(data).each(function() {
+						if(this.Client_ID == 1){
+						  alert(this.Client_ID);						  
+						}
+					});							                    
                 },
                  error: function (){
                     alert('error occured: Please try after some time.');
@@ -32,10 +40,8 @@
                  }
             });
           
-       });  
-		
-       
-        </script>
+       });      
+    </script>
    
  </head>
     
