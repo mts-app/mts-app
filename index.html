@@ -19,13 +19,13 @@
         $( document ).ready(function() {			
             $.ajax({ 
                 type: 'GET',
-                //url: 'http://14.140.163.70:151/WebService.asmx/UserLogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
-				url: 'http://14.140.163.70:151/WebService.asmx/UserLogin',              
-                data: {		                 
-                          mobile: "9818230356",
-                          mail : "sunil@mts-india.com",
-                          PWD: "sunil123",
-                     },				
+                url: 'http://14.140.163.70:151/WebService.asmx/UserLogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
+				//url: 'http://14.140.163.70:151/WebService.asmx/UserLogin',              
+               // data: {		                 
+                          //mobile: "9818230356",
+                         // mail : "sunil@mts-india.com",
+                          //PWD: "sunil123",
+                     //},				
                 success:function (data) {
 					alert(data);
 					$(data).each(function() {
