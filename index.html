@@ -26,7 +26,8 @@
                           mail : "sunil@mts-india.com",
                           PWD: "sunil123",
                      },				
-                success:function (data) {					
+                success:function (data) {
+					alert(data);
 					$(data).each(function() {
 						if(this.Client_ID == 1){
 						  alert(this.Client_ID);						  
