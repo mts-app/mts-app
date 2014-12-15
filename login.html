@@ -32,9 +32,10 @@
                 type: 'GET',
                 url: login_url,                  
                 success:function (data) {					
-					$(data).each(function() {
-						if(this.User_Verify_Status == 'true'){
-						  alert('You have successfully logged in. Please wait....');
+					$(data).each(function() {						
+						var VERIFY = $.trim(this.User_Verify_Status);
+						if(VERIFY == "true"){
+						   alert('You have successfully logged in. Please wait....');
 						   window.location= "signup.html";						
 						}else{ 
 							alert('You are not verified yet. Please verify your credentials.');
