@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>MTS-APP</title>
+	<link rel="stylesheet" href="css/mobile.css">
+	<link rel="stylesheet" href="css/semantic.css">  
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+    <script src="js/general_function.js"></script>
+   
+   <script type="text/javascript">      
+         
+         function login(){
+             
+            var EMAIL = $('#email').val();
+			var MOBILE = $('#mobile').val();
+            var PASSWORD = $('#password').val();
+            if(EMAIL =='' && MOBILE == ''){
+                alert('You must enter Email-address or Mobile number!');
+                return false;
+            }else if(PASSWORD == ''){
+                alert('You must enter password!');
+                return false;                
+            }
+			var login_url = "http://14.140.163.70:151/WebService.asmx/UserLogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
+						
+            $.ajax({ 
+                type: 'GET',
+                url: login_url,                  
+                success:function (data) {					
+					$(data).each(function() {						
+						var VERIFY = $.trim(this.User_Verify_Status);
+						if(VERIFY == "true"){
+						   alert('You have successfully logged in. Please wait....');
+						   window.location= "signup.html";						
+						}else{ 
+							alert('You are not verified yet. Please verify your credentials.');
+							window.location= "login.html";					  
+						} 
+					});                 
+                },            
+			});		
+        }
+        </script>
+ </head>
+ <body>
+	<div data-role="page" id="mainPage" style="z-index: 9999">
+		<div data-role="content">
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
+		 </div>	
+		<div id="content" class="rounded">
+			<h3 style="line-height: 0; padding-bottom: 0.5em;">Login</h3>
+			  <div class="field">
+				<label>Email-address</label>	 
+			    <div class="ui left labeled icon input">				 
+			      <input type="text" id="email">
+			      <i class="user icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			   <div class="field">or</div>
+			   <div class="field">
+				<label>Mobile number</label>	 
+			    <div class="ui left labeled icon input">				 
+			      <input type="text" id="mobile">
+			      <i class="user icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="field">
+				 <label>Password</label> 
+			    <div class="ui left labeled icon input">				  		
+			      <input type="password" id="password" >
+			      <i class="lock icon"></i>
+			      <div class="ui corner label">
+			        <i class="icon asterisk"></i>
+			      </div>
+			    </div>
+			  </div>
+			  <br/>
+			
+			  <div class="ui blue submit button" onclick="login();">Login</div>
+			  <br/><br/>
+			  <div>
+			  	<img class="icon help" border="0" src="http://www.braggn.com/images/help16.gif">
+				New user? Sign up <a href="signup.html">here</a>
+			  </div>	
+		</div>
+	</div>
+	<footer class="rounded">
+		&copy; MTS-Global Inc.
+	</footer>
+ </body>
+ </html>

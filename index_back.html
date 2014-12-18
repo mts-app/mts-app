@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>MTS-APP</title>
+      
+	<link rel="stylesheet" href="css/mobile.css">
+	<link rel="stylesheet" href="css/semantic.css">
+    <link rel="stylesheet" href="css/swipebox.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>	  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        
+   <script type="text/javascript">
+        var ajax_data;
+        $( document ).ready(function() {			
+            $.ajax({ 
+                type: 'GET',
+                url: 'http://14.140.163.70:151/WebService.asmx/UserLogin?mobile=9818230356&&mail=sunil@mts-india.com&&PWD=sunil123',              
+				//url: 'http://14.140.163.70:151/WebService.asmx/UserLogin',              
+               // data: {		                 
+                          //mobile: "9818230356",
+                         // mail : "sunil@mts-india.com",
+                          //PWD: "sunil123",
+                     //},				
+                success:function (data) {
+					//alert(data);
+					$(data).each(function() {
+						if(this.Client_ID == 1){
+						  alert(this.User_Verify_Status);						  
+						}
+					//});							                    
+                },
+                 error: function (){
+                    alert('error occured: Please try after some time.');
+                     return false;
+                 }
+            });
+          
+       });      
+    </script>
+   
+ </head>
+    
+ <body>
+	<div data-role="page" id="mainPage" style="z-index: 9999">
+		<div data-role="content">
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
+		 </div>		
+		<div id="content" class="rounded">
+            <nav class="clearfix rounded">
+				<div class="ui buttons">
+				  <div class="ui button"><a id="login_anchor" href="login.html">Login</a></div>
+				  <div class="or"></div>
+				  <div class="ui positive button"><a id="signup_anchor" href="signup.html">Sign Up</a></div>
+				</div>
+			</nav>			
+            <hr/>
+            <!-- VIDEO OF THE MONTH -->           		
+			<div id="featured-video">              
+				<h3 class="video_month_heading" style="font-size: 1.2em;">Do You want to Check your Reports Status!<span id="video_lastmonth"></span></h3>               
+                            
+				<br/>
+				<div class="fluid ui blue button"></div>
+			</div> 	
+			            	
+		</div>        
+	</div>
+       
+	<footer class="rounded">
+		&copy; MTS-Global Inc.
+	</footer>
+  
+ 
+ </body>
+ </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>MTS-APP</title>
+	<link rel="stylesheet" href="css/mobile.css">
+	<link rel="stylesheet" href="css/semantic.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>	 
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>  
+    <script type="text/javascript">
+        
+        function signup(){
+            
+            var user_email   = $('#user_email').val();
+            var user_phone 	 = $('#user_mobile').val();
+           
+            if(user_email ==''){
+                alert('You must enter email address!');
+                return false;
+            }
+			if(user_phone == ''){
+                alert('You must enter phone number!');
+                return false;                
+            }    
+           var signup_url = "http://14.140.163.70:151/WebService.asmx/UpdateSignup?mail="+user_email+"&clientid="+user_phone;
+           
+            $.ajax({ 
+                type: 'GEt',
+                url: signup_url,              
+                  
+                success:function (data) {
+					$(data).each(function() {						
+						var VERIFY = $.trim(this.User_Verify_Status);
+						if(VERIFY == 1){
+						   alert('You have been verified successfully');
+						   window.location= "login.html";						
+						}else{ 
+							alert('Something went wrong. Please try after some time. or The email address or mobile number you provided are not verified. Please provide another.');
+							window.location= "signup.html";					  
+						} 
+					});			
+                    
+                },
+            }); 
+            
+        
+        }
+    </script>
+ </head>
+ <body>
+	<div data-role="page" id="mainPage" style="z-index: 9999">
+		<div data-role="content">
+			<header>            	
+				<a href="index.html"><img src="img/mts_logo.jpg"></a>				
+			 </header>			
+		 </div>	
+		<div class="right floated tiny ui blue button" style="margin-right: 8px;margin-top: 19px;" onclick="javascript:window.location='login.html';">Login</div>
+		<div id="content" class="rounded">
+			<h3 style="line-height: 0; padding-bottom: 0.5em;">Sign Up</h3>
+			<div class="ui fluid form">
+			 
+              <div class="field">
+                <input type="text" name="user_email" id="user_email"  value="" placeholder="Email Address" size="30" maxlength="30"/><br/>
+			  </div> <br/>   
+             <div class="field">
+                <input type="text" name="user_mobile" id="user_mobile"  value="" placeholder="Mobile Number" size="30" maxlength="30"/><br/>
+			  </div>             		 
+			 <br/>
+			  </div>             
+			    <div class="ui blue submit button" onclick="signup();">Submit</div>
+			</div><br/>
+	</div>
+	
+	<footer class="rounded">
+		&copy; MTS-Global Inc.
+	</footer>
+ </body>
+ </html>
