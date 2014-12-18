@@ -11,7 +11,7 @@
     <description>
         MTS-GLOBAL INC.
     </description>
-    <icon src="res/icon/android/icon-72-hdpi.png">
+    <!-- <icon src="res/icon/android/icon-72-hdpi.png">-->
 
    
      <!--   If you do not want any permissions to be added to your app, add the
