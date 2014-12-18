@@ -3,14 +3,14 @@ body{
 }
 
 header{
-	background: url('../img/blue-stripes.png');
+	background: url('/img/blue-stripes.png');
 	width: 100%;
 	height: 75px;
 	border-bottom: 5px #74B70E solid;
 }
 
 header > figure{
-	background: url('../img/mts.png') no-repeat 0 3px;
+	background: url('/img/mts.png') no-repeat 0 3px;
 	width: 350px;
 	height: 70px;
 	content: " ";
