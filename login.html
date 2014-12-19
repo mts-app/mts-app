@@ -53,8 +53,14 @@
 						}else if($.trim(this.user_verify_status) == '0'){
 							alert('You are not verified yet. Please verify your credentials first.');
 							return false;
-						}else if($.trim(this.user_not_exists) == '-1'){ 
-							alert('Username or Password is incorrect.');
+						}else if($.trim(this.user_not_exists) == '-1'){
+							var user_field;
+							if(EMAIL != ""){
+								user_field = "Email-address";
+							}else{
+								user_field = "Mobile numer";
+							}
+							alert(user_field +' or Password is incorrect.');
 							return false;				  
 						} 
 					});                 
