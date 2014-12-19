@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type">
+    <meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/semantic.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+</head>
+<body>
+	<header>
+		<figure>
+			<img src="img/mts.png" alt="">
+		</figure>
+	</header>
+	<main>
+		<div class="container">
+			<div class="align-center">
+				<div class="ui warning form">
+				    <div class="field">
+				    	<label for="">Enter date to search reports...</label>
+				    	<div class="ui action input input-append date">
+						  <input type="text" placeholder="mm/dd/yyyy" id="datepicker">
+						  <div class="ui green button">Search</div>
+						</div>
+				    </div>
+				</div>
+				<!-- <table class="ui unstackable table">
+				  <thead>
+				    <tr>
+				      <th>Report No.</th>
+				      <th>Status</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td><a href="">0123</a></td>
+				      <td>Unknown</td>
+				    </tr>
+				    <tr class="positive">
+				      <td><a href="">0124</a></td>
+				      <td>Completed</td>
+				    </tr>
+				    <tr>
+				      <td><a href="">0125</a></td>
+				      <td>Unknown</td>
+				    </tr>
+				  </tbody>
+				</table> -->
+			</div>
+		</div>
+	</main>
+	<footer><p class="align-center text-muted">Copyright &copy; 2013 Modern Testing Services (Global) Ltd. <br>All rights reserved</p></footer>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="js/semantic.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script>
+		$(function() {
+		    $('#datepicker').datepicker();
+		  });
+	</script>
+</body>
+</html>

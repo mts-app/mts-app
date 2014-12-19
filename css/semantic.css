@@ -1264,7 +1264,7 @@ a:hover {
 .ui.buttons .button,
 .ui.buttons .or,
 .ui.button {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .ui.large.buttons .button,
@@ -9246,7 +9246,7 @@ ul.ui.list li:before,
   top: auto;
   left: auto;
   margin-left: -1rem;
-  content: '•';
+  content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢';
   opacity: 1;
   color: rgba(0, 0, 0, 0.8);
   vertical-align: top;
@@ -16294,7 +16294,7 @@ ol.ui.horizontal.list li:before,
 
 .ui.message ul.list li:before {
   position: absolute;
-  content: '•';
+  content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢';
   left: -1em;
   height: 100%;
   vertical-align: baseline;
@@ -16828,49 +16828,6 @@ ol.ui.horizontal.list li:before,
 /* Responsive */
 
 @media only screen and (max-width: 768px) {
-  .ui.table {
-    display: block;
-    padding: 0em;
-  }
-
-  .ui.table thead {
-    display: block;
-  }
-
-  .ui.table tfoot {
-    display: block;
-  }
-
-  .ui.table tbody {
-    display: block;
-  }
-
-  .ui.table tr {
-    display: block;
-  }
-
-  .ui.table tr > th,
-  .ui.table tr > td {
-    background: none;
-    width: 100% !important;
-    display: block;
-    border: none !important;
-    padding: 0.25em 0.75em;
-    box-shadow: none;
-  }
-
-  .ui.table th:first-child,
-  .ui.table td:first-child {
-    font-weight: bold;
-    padding-top: 1em;
-  }
-
-  .ui.table th:last-child,
-  .ui.table td:last-child {
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1) inset;
-    padding-bottom: 1em;
-  }
-
   /* Clear BG Colors */
 
   .ui.table tr > td.warning,
@@ -20768,7 +20725,7 @@ a.ui.card:hover,
 }
 
 /*  UTF Reference
-.check:before { content: '\e800'; }  ''
+.check:before { content: '\e800'; }  'ÃƒÂ®Ã‚Â Ã¢â€šÂ¬'
 .circle:before { content: '\e801'; }
 .ok-circled:before { content: '\e806'; }
 .ok-circle:before { content: '\e805'; }
@@ -24991,6 +24948,7 @@ a.ui.nag {
 
 .ui.table thead th:last-child {
   border-radius: 0em 0.25rem 0em 0em;
+  /* border-bottom: none; */
 }
 
 .ui.table thead th:only-child {
@@ -25074,12 +25032,12 @@ a.ui.nag {
 
 @media only screen and (max-width: 768px) {
   .ui.table {
-    display: block;
-    padding: 0em;
+    /* display: block; */
+    /* padding: 0em; */
   }
 
   .ui.table thead {
-    display: block;
+    /* display: block; */
   }
 
   .ui.table tfoot {
@@ -25087,33 +25045,35 @@ a.ui.nag {
   }
 
   .ui.table tbody {
-    display: block;
+    /* display: block; */
   }
 
   .ui.table tr {
-    display: block;
-  }
+    /* display: block; */
+  
+    width: 100%;
+}
 
   .ui.table tr > th,
   .ui.table tr > td {
-    background: none;
-    width: 100% !important;
-    display: block;
-    border: none !important;
-    padding: 0.25em 0.75em;
-    box-shadow: none;
+    /* background: none; */
+    /* width: 100% !important; */
+    /* display: block; */
+    /* border: none !important; */
+    /* padding: 0.25em 0.75em; */
+    /* box-shadow: none; */
   }
 
   .ui.table th:first-child,
   .ui.table td:first-child {
-    font-weight: bold;
-    padding-top: 1em;
+    /* font-weight: bold; */
+    /* padding-top: 1em; */
   }
 
   .ui.table th:last-child,
   .ui.table td:last-child {
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1) inset;
-    padding-bottom: 1em;
+    /* box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1) inset; */
+    /* padding-bottom: 1em; */
   }
 
   /* Clear BG Colors */
@@ -27181,7 +27141,7 @@ a.ui.nag {
 .ui.form .field > label {
   display: block;
   margin: 0em 0em 0.2857rem 0em;
-  color: rgba(0, 0, 0, 0.8);
+  color: #3171A6;
   font-size: 0.9285em;
   font-weight: bold;
   text-transform: none;
@@ -28041,8 +28001,4 @@ a.ui.nag {
 
 /*******************************
          Theme Overrides
-*******************************/
-
-/*******************************
-         Site Overrides
-*******************************/
+*********************
