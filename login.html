@@ -8,6 +8,43 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/semantic.css">
+	<script type="text/javascript">      
+         
+         function login(){
+             
+            var EMAIL = $('#email').val();
+			var MOBILE = $('#mobile').val();
+            var PASSWORD = $('#password').val();
+            if(EMAIL =='' && MOBILE == ''){
+                alert('You must enter Email-address or Mobile number!');
+                return false;
+            }else if(PASSWORD == ''){
+                alert('You must enter password!');
+                return false;                
+            }
+			var login_url = "http://14.140.163.70:151/WebService.asmx/UserLogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
+						
+            $.ajax({ 
+                type: 'GET',
+                url: login_url,                  
+                success:function (data) {					
+					$(data).each(function() {						
+												
+						if($.trim(this.User_Verify_Status) == "true"){
+						   alert('You have successfully logged in. Please wait....');
+						   window.location= "selectdate.html";						
+						}else if($.trim(this.user_verify_status) == '0'){
+							alert('You are not verified yet. Please verify your credentials first.');
+							return false;
+						}else if($.trim(this.user_not_exists) == '-1'){ 
+							alert('Username or Password is incorrect.');
+							return false;				  
+						} 
+					});                 
+                },            
+			});		
+        }
+        </script>
 </head>
 <body>
 	<header>
