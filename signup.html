@@ -8,6 +8,45 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/semantic.css">
+	<script type="text/javascript">
+        
+        function signup(){
+            
+            var user_email   = $('#user_email').val();
+            var user_phone 	 = $('#user_mobile').val();
+           
+            if(user_email ==''){
+                alert('You must enter email address!');
+                return false;
+            }
+			if(user_phone == ''){
+                alert('You must enter phone number!');
+                return false;                
+            }    
+           var signup_url = "http://14.140.163.70:151/WebService.asmx/UpdateSignup?mail="+user_email+"&clientid="+user_phone;
+           
+            $.ajax({ 
+                type: 'GEt',
+                url: signup_url,              
+                  
+                success:function (data) {
+					$(data).each(function() {						
+						var VERIFY = $.trim(this.User_Verify_Status);
+						if(VERIFY == 1){
+						   alert('You have been verified successfully.');
+						   window.location= "login.html";						
+						}else{ 
+							alert('Something went wrong. Please try after some time. or The email address or mobile number you provided are not verified. Please provide another one.');
+							window.location= "signup.html";					  
+						} 
+					});			
+                    
+                },
+            }); 
+            
+        
+        }
+    </script>
 </head>
 <body>
 	<header>
@@ -36,17 +75,13 @@
 				    </div>
 				    <div class="field">
 				    	<label for="">Email Address</label>
-				     	<input type="text">
+				     	<input type="text" id="user_email">
 				    </div>
 				    <div class="field">
 				    	<label for="">Mobile Number</label>
-				     	<input type="text">
-				    </div>
-					<div class="field">
-						<label for="">Password</label>
-					<input type="password">
-					</div>
-					<div class="ui submit positive button">Sign up</div>
+				     	<input type="text" id="user_mobile">
+				    </div>					
+					<div class="ui submit positive button" onclick="signup();">Sign up</div>
 				</div>
 			</div>
 		</div>
