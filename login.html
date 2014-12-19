@@ -26,11 +26,21 @@
 			if(EMAIL_OR_MOBILE.match(numbers))  
 			{
 				MOBILE = EMAIL_OR_MOBILE;
+				EMAIL = "";
 			}else{
 				EMAIL = EMAIL_OR_MOBILE;
+				MOBILE="";
+				if(EMAIL != ""){
+					var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+					if (!filter.test(EMAIL)) {						
+						alert("Please enter valid email-address");
+						return false;
+					}
+				}
 			}
+			
 			var login_url = "http://14.140.163.70:151/WebService.asmx/UserLogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
-						
+			
             $.ajax({ 
                 type: 'GET',
                 url: login_url,                  
