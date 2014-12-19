@@ -11,17 +11,24 @@
 	<script type="text/javascript">      
          
          function login(){
-             
-            var EMAIL = $('#email').val();
-			var MOBILE = $('#mobile').val();
+             var MOBILE;
+			 var EMAIL;
+            var EMAIL_OR_MOBILE = $('#email_or_mobile').val();			
             var PASSWORD = $('#password').val();
-            if(EMAIL =='' && MOBILE == ''){
+			var numbers = /^[0-9]+$/;
+            if(EMAIL_OR_MOBILE ==''){
                 alert('You must enter Email-address or Mobile number!');
                 return false;
             }else if(PASSWORD == ''){
                 alert('You must enter password!');
                 return false;                
             }
+			if(EMAIL_OR_MOBILE.match(numbers))  
+			{
+				MOBILE = EMAIL_OR_MOBILE;
+			}else{
+				EMAIL = EMAIL_OR_MOBILE;
+			}
 			var login_url = "http://14.140.163.70:151/WebService.asmx/UserLogin?mobile="+MOBILE+"&mail="+EMAIL+"&PWD="+PASSWORD;
 						
             $.ajax({ 
@@ -58,11 +65,11 @@
 				<div class="ui warning form">
 				    <div class="field">
 				    	<label for="">Email Address / Mobile Number</label>
-				      	<input type="text">
+				      	<input type="text" name="email_or_mobile" id="email_or_mobile">
 				    </div>
 				    <div class="field">
 					  	<label for="">Password</label>
-					    <input type="password">
+					    <input type="password" name="password" id="password">
 					  </div>
 				  <div class="ui submit positive button">Login</div>
 				</div>
