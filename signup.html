@@ -12,18 +12,36 @@
         
         function signup(){
             
-            var user_email   = $('#user_email').val();
-            var user_phone 	 = $('#user_mobile').val();
+			var user_fullname   = $('#user_fullname').val();
+            var user_email   	= $('#user_email').val();
+            var user_phone 	 	= $('#user_mobile').val();
            
-            if(user_email ==''){
+            if(user_fullname ==''){
+                alert('You must enter your name!');
+                return false;
+            }
+			if(user_email ==''){
                 alert('You must enter email address!');
                 return false;
             }
 			if(user_phone == ''){
                 alert('You must enter phone number!');
                 return false;                
-            }    
-           var signup_url = "http://14.140.163.70:151/WebService.asmx/UpdateSignup?mail="+user_email+"&clientid="+user_phone;
+            } 
+			if(user_email != ""){
+				var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+				if (!filter.test(user_email)) {						
+					alert("Please enter valid email-address");
+					return false;
+				}
+			}
+			var numbers = /^[0-9]+$/;
+			if(!user_phone.match(numbers))  
+			{
+				alert("Mobile number should be numeric only.");
+				return false;
+			}	
+           var signup_url = "http://14.140.163.70:151/WebService.asmx/UpdateSignup?mail="+user_email+"&mobilenumber="+user_phone;
            
             $.ajax({ 
                 type: 'GEt',
@@ -31,20 +49,19 @@
                   
                 success:function (data) {
 					$(data).each(function() {						
-						var VERIFY = $.trim(this.User_Verify_Status);
-						if(VERIFY == 1){
+						
+						if($.trim(this.User_Verify_Status) == '1'){
 						   alert('You have been verified successfully.');
 						   window.location= "login.html";						
+						}else if($.trim(this.User_exists) == '0'){
+							alert("Email-address or Mobile number does not match. Please enetr correct information.");
 						}else{ 
 							alert('Something went wrong. Please try after some time. or The email address or mobile number you provided are not verified. Please provide another one.');
-							window.location= "signup.html";					  
+							return false;					  
 						} 
-					});			
-                    
+					});                    
                 },
-            }); 
-            
-        
+            });        
         }
     </script>
 </head>
@@ -71,7 +88,7 @@
 					</div>
 				  	<div class="field">
 				  		<label for="">Name</label>
-				     	<input type="text">
+				     	<input type="text" id="user_fullname">
 				    </div>
 				    <div class="field">
 				    	<label for="">Email Address</label>
