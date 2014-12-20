@@ -34,8 +34,7 @@
             var test_result_url = "http://14.140.163.70:151/WebService.asmx/TestResult?reportnumber="+report_number;			
             $.ajax({ 
                 type: 'GET',
-                url: test_result_url,              
-                  
+                url: test_result_url,                 
                 success:function (data) {
 					
 					$(data).each(function() {
