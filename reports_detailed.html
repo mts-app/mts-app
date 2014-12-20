@@ -26,8 +26,8 @@
 		$( document ).ready(function() {			
 			var report_number = getUrlVars()["report_no"];
 			var client_name = getUrlVars()["clientname"];
-			if(Client_Name != ""){
-				$('#welcome_txt').html("Welcome <span style=color:blue>"+Client_Name+"!</span>");
+			if(client_name != ""){
+				$('#welcome_text').html("Welcome <span style=color:blue>"+client_name+"!</span>");
 			} 
 			var back_url = "selectdate.html?ClientName="+client_name;
 			$('#back_btn').attr('href',back_url);	
@@ -74,7 +74,7 @@
 	</header>
 	<main>
 		<div class="container">
-			<div style="float:right" id="welcome_txt"></div>
+			<div style="float:right" id="welcome_text"></div>
 			<div class="align-center">
 				<div class="ui warning form">
 				    <div class="field">
