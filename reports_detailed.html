@@ -25,7 +25,13 @@
 		
 		$( document ).ready(function() {
 			
-			var report_number = getUrlVars()["report_no"];			
+			var report_number = getUrlVars()["report_no"];
+			var client_name = getUrlVars()["clientname"];
+			if(Client_Name != ""){
+				$('#welcome_txt').html("Welcome <span style=color:blue>"+Client_Name+"!</span>");
+			}
+			var back_url = "selectdate.html?ClientName="+client_name;
+			$('#back_btn').attr('href',back_url);	
             var test_result_url = "http://14.140.163.70:151/WebService.asmx/TestResult?reportnumber="+report_number;
 			
             $.ajax({ 
@@ -56,6 +62,7 @@
 						}						 
 					});                    
                 },
+					
             });        
         });
     </script>
@@ -68,6 +75,7 @@
 	</header>
 	<main>
 		<div class="container">
+			<div style="float:right" id="welcome_txt"></div>
 			<div class="align-center">
 				<div class="ui warning form">
 				    <div class="field">
@@ -86,7 +94,7 @@
 				  <tbody id="test_result">				   			    
 				  </tbody>
 				</table>
-				<a href="selectdate.html" class="ui positive button">&lsaquo; &nbsp;Back</a>
+				<a href="" class="ui positive button" id="back_btn">&lsaquo; &nbsp;Back</a>
 			</div>
 		</div>
 	</main>
