@@ -30,7 +30,7 @@
 			client_id = getUrlVars()["clientid"];
 			Client_Name = getUrlVars()["ClientName"];
 			if(Client_Name != ""){
-				$('#welcome_txt').html("Welcome "+Client_Name+"!");
+				$('#welcome_txt').html("Welcome <span style=color:blue>"+Client_Name+"!</span>");
 			}
 			
 		 });
@@ -43,7 +43,7 @@
 				return false;
 			}
 			
-            var date_select_url = "http://14.140.163.70:151/WebService.asmx/ReportResult?date="+select_date+"&clientid="+client_id;
+            var date_select_url = "http://14.140.163.70:151/WebService.asmx/ReportResult?date="+select_date+"&clientid="+client_id+"&clientname="+Client_Name;
 			
             $.ajax({ 
                 type: 'GET',
