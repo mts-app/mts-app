@@ -31,8 +31,7 @@
 			} 
 			var back_url = "selectdate.html?ClientName="+client_name;
 			$('#back_btn').attr('href',back_url);	
-            var test_result_url = "http://14.140.163.70:151/WebService.asmx/TestResult?reportnumber="+report_number;
-			
+            var test_result_url = "http://14.140.163.70:151/WebService.asmx/TestResult?reportnumber="+report_number;			
             $.ajax({ 
                 type: 'GET',
                 url: test_result_url,              
