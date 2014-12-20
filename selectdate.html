@@ -41,8 +41,8 @@
 				alert("You did not select any date!");
 				return false;
 			}
-			client_id = '1';
-            var date_select_url = "http://14.140.163.70:151/WebService.asmx/ReportResult?date="+select_date+"&clientid="+client_id+"&clientname="+Client_Name;
+			
+            var date_select_url = "http://14.140.163.70:151/WebService.asmx/ReportResult?date="+select_date+"&clientid="+client_id;
 			
             $.ajax({ 
                 type: 'GET',
@@ -59,7 +59,7 @@
 							$('#no_records').hide();
 							$('#no_records').html("");
 							$('#report_result').show();						
-							$('#report_row').append("<tr><td><a href='reports_detailed.html?report_no="+this.Report_Number+"'>"+this.Report_Number+"</a></td><td>"+this.Result+"</td></tr>");
+							$('#report_row').append("<tr><td><a href='reports_detailed.html?report_no="+this.Report_Number+"&clientname="+Client_Name+"'>"+this.Report_Number+"</a></td><td>"+this.Result+"</td></tr>");
 						}						 
 					});                    
                 },
