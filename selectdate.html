@@ -48,8 +48,7 @@
                 type: 'GET',
                 url: date_select_url,              
                   
-                success:function (data) {
-					
+                success:function (data) {					
 					$(data).each(function() {						
 						if(this.report_status == '0'){
 							$('#report_result').hide();
