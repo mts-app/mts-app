@@ -49,7 +49,7 @@
 												
 						if($.trim(this.User_Verify_Status) == "true"){
 						   alert('You have successfully logged in. Please wait....');
-						   window.location= "selectdate.html";						
+						   window.location= "selectdate.html?clientid="+this.Client_ID+"&ClientName="+this.Client_Name;						
 						}else if($.trim(this.user_verify_status) == '0'){
 							alert('You are not verified yet. Please verify your credentials first.');
 							return false;

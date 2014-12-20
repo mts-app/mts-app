@@ -8,6 +8,57 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/semantic.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function getUrlVars()
+		{
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++)
+			{
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+		}		
+		
+		$( document ).ready(function() {
+			
+			var report_number = getUrlVars()["report_no"];			
+            var test_result_url = "http://14.140.163.70:151/WebService.asmx/TestResult?reportnumber="+report_number;
+			
+            $.ajax({ 
+                type: 'GET',
+                url: test_result_url,              
+                  
+                success:function (data) {
+					
+					$(data).each(function() {
+						$('#report_no_for').html("Report Number "+report_number);
+						if(this.test_status == '0'){
+							$('#test_result_row').hide();
+							$('#test_result').html("");
+							$('#no_test_result').show();						
+							$('#no_test_result').html("<span style='color:red'>No Record Found!<br/><br/></span>");
+						}else{						
+							var RATING;							
+							$('#no_test_result').hide();
+							$('#no_test_result').html("");
+							$('#test_result_row').show();
+							var RATING;
+							if(this.Result == 'FAIL'){
+								RATING = this.Result +" ("+this.Rating+")";
+							}else{
+								RATING = this.Result;
+							}							
+							$('#test_result').append("<tr><td>"+this.Test_Name+"</td><td>"+RATING+"</td></tr>");
+						}						 
+					});                    
+                },
+            });        
+        });
+    </script>
 </head>
 <body>
 	<header>
@@ -20,37 +71,26 @@
 			<div class="align-center">
 				<div class="ui warning form">
 				    <div class="field">
-				    	 <label for="">Report no. 0123</label>
+				    	 <label for="" id="report_no_for"></label>
 				    </div>
 				</div>
-				<table class="ui unstackable table">
+				<div id="no_test_result" style="display:none">
+				</div>
+				<table class="ui unstackable table" id="test_result_row" style="display:none">
 				  <thead>
 				    <tr>
 				      <th>Test name</th>
 				      <th>Result</th>
 				    </tr>
 				  </thead>
-				  <tbody>
-				    <tr>
-				      <td>Lorem ipsum</td>
-				      <td>Unknown</td>
-				    </tr>
-				    <tr>
-				      <td>Dolor si amet</td>
-				      <td>Unknown</td>
-				    </tr>
-				    <tr>
-				      <td>Lorem ipsum</td>
-				      <td>Unknown</td>
-				    </tr>
+				  <tbody id="test_result">				   			    
 				  </tbody>
 				</table>
-				<a href="" class="ui positive button">&lsaquo; &nbsp;Back</a>
+				<a href="selectdate.html" class="ui positive button">&lsaquo; &nbsp;Back</a>
 			</div>
 		</div>
 	</main>
-	<footer><p class="align-center text-muted">Copyright &copy; 2013 Modern Testing Services (Global) Ltd. <br>All rights reserved</p></footer>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<footer><p class="align-center text-muted">Copyright &copy; 2013 Modern Testing Services (Global) Ltd. <br>All rights reserved</p></footer>	
 	<script src="js/semantic.js"></script>
 </body>
 </html>
